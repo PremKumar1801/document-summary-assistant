@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document Summary Assistant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.0.4/tesseract.min.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="masthead">
+      <div class="eyebrow">DOCUMENT INTELLIGENCE</div>
+      <h2>Document Summary Assistant</h2>
+      <p>Turn long documents into clear, concise summaries.</p>
+    </header>
+
+    <div class="sheet">
+      <div class="sheet-rule"></div>
+      <div class="sheet-body">
+
+        <div id="dropzone" class="dropzone">
+          <span class="icon">☙</span>
+          <h3>Drop a document here</h3>
+          <p>PDF, PNG, or JPG — scanned pages welcome. Click to browse instead.</p>
+          <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg,.webp" />
+        </div>
+
+        <div id="filebar" class="filebar" style="display:none">
+          <span id="filename"></span>
+          <button id="clearFile">remove</button>
+        </div>
+
+        <div class="controls">
+          <div class="length-select" id="lengthSelect">
+            <button data-len="short">Short</button>
+            <button data-len="medium" class="active">Medium</button>
+            <button data-len="long">Long</button>
+          </div>
+          <button class="go-btn" id="goBtn" disabled>Summarize document</button>
+        </div>
+
+        <div class="status" id="status">
+          <div class="spinner"></div>
+          <span id="statusText">Reading document…</span>
+        </div>
+
+        <div class="error-box" id="errorBox"></div>
+
+        <div class="result" id="result">
+          <div class="result-head">
+            <h2>Summary</h2>
+            <span class="stats" id="statsLine"></span>
+          </div>
+          <div class="summary-text" id="summaryText"></div>
+          <div class="keywords" id="keywords"></div>
+          <button class="copy-btn" id="copyBtn">Copy summary</button>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>Extraction and summarization happen right in your browser. Nothing gets uploaded.</footer>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
